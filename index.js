@@ -1,14 +1,17 @@
-const express = require("express");
+import express from 'express';
 const app = express();
-const port = 3000;
-const bodyParser = require("body-parser")
-
+ import {Users} from './Users.js'
+const port = 3000
+app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
- res.send("Server is running");
+ res.render('view', {Users});
+ 
 });
+app.get('/users', (req, res)=>{
+    res.send({Users});
+});
+
 app.listen(port, () => {
- console.log("Server is running")
-
-
+ console.log("Server is running");
 });
