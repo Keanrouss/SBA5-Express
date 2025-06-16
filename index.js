@@ -64,6 +64,14 @@ if (title) {
   }
   res.send ({Recipes})
 }),
+app.post('/recipes', (req, res) => {
+  const newRecipe = { id: Users[Users.length-1].id +1, 
+    title: req.body.title,
+    category: req.body.category,
+    instructions: req.body.instructions, };
+  Recipes.push(newRecipe);
+  res.status(201).send(newRecipe);
+});
 
 //error handling
 app.use ((error, req, res, next) => {
