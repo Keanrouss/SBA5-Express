@@ -1,6 +1,7 @@
 import express from 'express';
 const app = express();
  import {Users} from './Users.js'
+ import {Comments} from './data/comments.js'
 const port = 3000
 app.set('view engine', 'ejs');
 
