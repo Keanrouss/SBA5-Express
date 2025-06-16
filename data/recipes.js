@@ -5,7 +5,6 @@ export const Recipes =[
     category: 'Main Entree',
     instructions: 'For potatoes: Cut potatoes in slices, Add oil in pan, cook potatoes for 5 mins then add into a baking bowl. Sprinkle parmesan and bake for 35mins at 380 ',
 
-
   },
   {
     id: 2,

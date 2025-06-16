@@ -17,7 +17,8 @@ export const Users = [
     username: "Hajime2021",
     email: "Hajime2021@gmail.com",
     comment: 'I want to have those potatoes with some jerk chicken',
+    //added their comments under their profiles as well to make it easier to transfer information.
    },
 ];
-
-//module.export = Users
+// They are shown in Localhost3000/Users (with capital U when typed in) 
+// but unable to get them to show when clicked submit button.
