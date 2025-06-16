@@ -23,6 +23,6 @@ export const Recipes =[
  id: 4,
     title: 'Bagel with Peanut Butter',
     category: 'Snacks',
-    instructions:'Toast bagel for 1 min in toaster. Add peanut butter and spread onto bagel',
+    instructions:'Toast bagel for 1 min in toaster. Add peanut butter and spread onto bagel.',
 }
 ]

@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecipesHub</title>
+  <title>Welcome to RecipeHub</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-  <h2>Users</h2>
-<ul>
-    <% Users.forEach(User=> { %>
-      <li><%= User.name%> - <%= User.comment %></li>
-    <% }) %>
+  <h1> RecipeHub</h1>
+  <h2>Recipes</h2>
+  <ul>
+    <% Recipes.forEach(recipe=> { %>
+      <li><strong>
+          <%= recipe.title %>
+        </strong>: <%= recipe.instructions %>
+      </li>
+      <% }) %>
   </ul>
-  <!-- <h3>Add a Comment</h3> -->
-  <form method="POST" action="/comments">
-    <input name="username" placeholder="Username" required />
-    <input name="content" placeholder="Your comment" required />
+  <h2>Users</h2>
+  <ul>
+    <% Users.forEach(user=> { %>
+      <li><strong>
+          <%= user.name %>
+        </strong>: <%= user.comment %>
+      </li>
+      <% }) %>
+  </ul>
+  <h2>Leave Us a comment </h2>
+  <form action="/users" method="POST">
+    <input name="name" placeholder="Name" required>
+    <input name="username" placeholder="Username" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="comment" placeholder="Comment">
     <button type="submit">Submit</button>
   </form>
 </body>
+
 </html>
