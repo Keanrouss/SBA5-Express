@@ -6,6 +6,17 @@
     <title>RecipesHub</title>
 </head>
 <body>
-    <h1>RecipeHub</h1>
+  <h2>Users</h2>
+<ul>
+    <% Users.forEach(User=> { %>
+      <li><%= User.name%> - <%= User.comment %></li>
+    <% }) %>
+  </ul>
+  <!-- <h3>Add a Comment</h3> -->
+  <form method="POST" action="/comments">
+    <input name="username" placeholder="Username" required />
+    <input name="content" placeholder="Your comment" required />
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>
