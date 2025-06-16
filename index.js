@@ -21,7 +21,7 @@ app.get('/Users', (req, res)=>{
 });
 //post user/ required info are email, username, id, name to be a full acceptable request to allow push/
 // be sent to Next. 201 status means okay as info in correct format
-app.post('/users', (req, res, next) => {
+app.post('/Users', (req, res, next) => {
   const newUser = { id: Users[Users.length-1].id +1, // users length plus 1 once added
     name: req.body.name,
     username: req.body.username,
@@ -29,6 +29,18 @@ app.post('/users', (req, res, next) => {
   }
   Users.push(newUser);
   res.status(201).send(newUser);
+});
+app.patch('/Users/:id', (req, res) => {
+  const user = Users.find(user => user.index == req.params.id); 
+  if (!user) return res.status(404).send({ error: "User not found, Try again" });
+  Object.assign(user, req.body);
+  return(user);
+});
+app.delete('/users/:id', (req, res) => {
+  const user = Users.find(user => user.index == req.params.id);
+  if (Users === -1) return res.status(404).send({ error: "User not found" });
+  Users.splice(user, 1);
+  return({ success });
 });
 
 app.get('/comments', (req, res)=>{
@@ -48,10 +60,15 @@ app.get('/recipes', (req, res) => {
 if (title) {
     desiredRecipes = desiredRecipes.filter(recipe =>
       recipe.title.toLowerCase().includes(title.toLowerCase()));
-      return res.send ({recipes: filtered});
+      return res.send ({desiredRecipes});
   }
   res.send ({Recipes})
 }),
+
+//error handling
+app.use ((error, req, res, next) => {
+console.error ('Error')
+});
 app.listen(port, () => { //port is giving the message that is console.log when there is not /Users or comments 
     //added after the port(3000)
  console.log("Server is running");
