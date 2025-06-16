@@ -8,7 +8,8 @@ const app = express();
 const port = 3000
 //^port where the '/' need to be added at the end follow by Users, comments etc to get info
 
-
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.set('view engine', 'ejs');//visual aspect/ install ejs to make work
 
 app.get("/", (req, res) => {
@@ -22,6 +23,7 @@ app.get('/Users', (req, res)=>{
 //post user/ required info are email, username, id, name to be a full acceptable request to allow push/
 // be sent to Next. 201 status means okay as info in correct format
 app.post('/Users', (req, res, next) => {
+  console.log("hello",req.body)
   const newUser = { id: Users[Users.length-1].id +1, // users length plus 1 once added
     name: req.body.name,
     username: req.body.username,
@@ -36,7 +38,7 @@ app.patch('/Users/:id', (req, res) => {
   Object.assign(user, req.body);
   return(user);
 });
-app.delete('/users/:id', (req, res) => {
+app.delete('/Users/:id', (req, res) => {
   const user = Users.find(user => user.index == req.params.id);
   if (Users === -1) return res.status(404).send({ error: "User not found" });
   Users.splice(user, 1);
@@ -75,7 +77,7 @@ app.post('/recipes', (req, res) => {
 
 //error handling
 app.use ((error, req, res, next) => {
-console.error ('Error')
+console.error ('Error',error)
 });
 app.listen(port, () => { //port is giving the message that is console.log when there is not /Users or comments 
     //added after the port(3000)
